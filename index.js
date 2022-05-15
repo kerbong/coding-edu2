@@ -20,6 +20,17 @@ function menu_add(e) {
   addItem.innerText = add_menu.value;
   addItem.id = add_menu.value;
   addItem.className = "menu-items";
+  // 클릭하면 지우는 기능 넣어두기
+  addItem.addEventListener("click", removeMenu);
+  // 음식 이름 클릭하면 지워짐.
+  function removeMenu() {
+    let index = menu.indexOf(this.innerText);
+    //화면에서 지우고
+    document.getElementById(this.innerText).remove();
+    //메뉴(백엔드)에서도 지움
+    menu.splice(index, 1);
+    console.log(menu);
+  }
   //최종적으로 화면에 추가함
   menu_list.appendChild(addItem);
   add_menu.value = "";
