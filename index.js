@@ -13,6 +13,16 @@ function menu_add(e) {
   //메뉴(백엔드)에 추가하기
   menu.push(add_menu.value);
   console.log(menu);
+
+  //추가한 메뉴 html 화면에 보여주기
+  let addItem = document.createElement("button");
+  // 속성추가하기(글자, id, class)
+  addItem.innerText = add_menu.value;
+  addItem.id = add_menu.value;
+  addItem.className = "menu-items";
+  //최종적으로 화면에 추가함
+  menu_list.appendChild(addItem);
+  add_menu.value = "";
 }
 
 // 메뉴선택 버튼 누르면 보여줄 결과
@@ -22,8 +32,8 @@ function show_result() {
   console.log(`랜덤으로 뽑힌 숫자는 ${randomNum}`);
   //메뉴중에서 난수에 해당하는 거 고르기
   let today_menu = menu[randomNum];
-  //콘솔에 보여주기
-  console.log(`오늘 먹을 메뉴는..??!!!  ${today_menu}`);
+  //화면에 보여주기
+  menu_result.innerText = `오늘 먹을 메뉴는..??!!!  "${today_menu}"`;
 }
 
 //화면이 실행되면 가장 처음 실행할 함수모음
