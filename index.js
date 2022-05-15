@@ -10,6 +10,23 @@ function menu_add(e) {
   //페이지 새로고침 막기
   e.preventDefault();
 
+  //.trim()을 할경우 띄어쓰기를 없애줌.
+  // 띄어쓰기만 넣은 걸 입력할 경우
+  if (add_menu.value.trim().length == 0) {
+    add_menu.value = "";
+    //음식추가함수 실행 끝냄
+    return;
+  }
+
+  //이미 있는 메뉴일 경우 메뉴 반복문 돌리면서 메뉴 값과 같은지 확인함
+  for (item of menu) {
+    if (item == add_menu.value) {
+      alert("이미 존재하는 메뉴입니다!");
+      add_menu.value = "";
+      return;
+    }
+  }
+
   //메뉴(백엔드)에 추가하기
   menu.push(add_menu.value);
   console.log(menu);
